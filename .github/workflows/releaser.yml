@@ -4,8 +4,8 @@ on:
   push:
     tags:
     - '*'
-    branches:
-    - '*'
+    # branches:
+    # - '*'
 
 env:
   SOLUTION_NAME: CropBlank_S

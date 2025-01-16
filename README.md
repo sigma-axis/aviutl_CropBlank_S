@@ -140,7 +140,7 @@ left2, top2, right2, bottom2 = CropBlank_S.bounding_box(left, top, right, bottom
 
 ##  改版履歴
 
-- **v1.00** (2025-01-??)
+- **v1.00** (2025-01-16)
 
   - 初版．
 
