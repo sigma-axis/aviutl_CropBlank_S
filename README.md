@@ -6,7 +6,7 @@ Mr-Ojii 様の [AutoClipping_M](https://github.com/Mr-Ojii/AviUtl-AutoClipping_M
 
 ![余白除去のデモ](https://github.com/user-attachments/assets/7200146a-8d17-4a8b-aab9-7be045871662)
 
-[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl_CropBlank_S/releases) \[紹介動画準備中...\]
+[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl_CropBlank_S/releases) [紹介動画](https://www.nicovideo.jp/watch/sm44546499)
 
 ##  動作要件
 
