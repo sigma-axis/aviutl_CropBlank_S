@@ -6,7 +6,7 @@ Mr-Ojii 様の [AutoClipping_M](https://github.com/Mr-Ojii/AviUtl-AutoClipping_M
 
 ![余白除去のデモ](https://github.com/user-attachments/assets/7200146a-8d17-4a8b-aab9-7be045871662)
 
-[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl_CropBlank_S/releases) [紹介動画](https://www.nicovideo.jp/watch/sm44546499)
+[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl_CropBlank_S/releases) [紹介動画．](https://www.nicovideo.jp/watch/sm44546499)
 
 ##  動作要件
 
@@ -126,6 +126,17 @@ left2, top2, right2, bottom2 = CropBlank_S.bounding_box(left, top, right, bottom
     obj.effect("クリッピング", "左", left2, "上", top2, "右", w - right2, "下", h - bottom2)
   end
   ```
+
+##  ビルド方法について
+
+このプロジェクトをビルドする際には `lua` フォルダに以下のファイルを配置してください．
+
+- `lua51.lib`
+- `lua.h`
+- `lualib.h`
+- `luaconf.h`
+- `lauxlib.h`
+- `lua.hpp`
 
 ##  謝辞
 
