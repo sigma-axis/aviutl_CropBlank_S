@@ -406,12 +406,12 @@ static inline void crop_pad(int L, int T, int R, int B, ExEdit::Exfunc* exfunc, 
 	efpip->obj_w += L + R; efpip->obj_h += T + B;
 
 	if (L <= 0 && R <= 0) {
-		if (T > 0) exfunc->fill(efpip->obj_temp, 0, 0, efpip->obj_w, T, 0, 0, 0, 0, 2);
-		if (B > 0) exfunc->fill(efpip->obj_temp, 0, efpip->obj_h - B, efpip->obj_w, B, 0, 0, 0, 0, 2);
+		if (T > 0) exfunc->fill(efpip->obj_temp, 0, 0, efpip->obj_w, std::min(efpip->obj_h, T), 0, 0, 0, 0, 2);
+		if (B > 0) exfunc->fill(efpip->obj_temp, 0, std::max(0, efpip->obj_h - B), efpip->obj_w, std::min(efpip->obj_h, B), 0, 0, 0, 0, 2);
 	}
 	else if (T <= 0 && B <= 0) {
-		if (L > 0) exfunc->fill(efpip->obj_temp, 0, 0, L, efpip->obj_h, 0, 0, 0, 0, 2);
-		if (R > 0) exfunc->fill(efpip->obj_temp, efpip->obj_w - R, 0, R, efpip->obj_h, 0, 0, 0, 0, 2);
+		if (L > 0) exfunc->fill(efpip->obj_temp, 0, 0, std::min(efpip->obj_w, L), efpip->obj_h, 0, 0, 0, 0, 2);
+		if (R > 0) exfunc->fill(efpip->obj_temp, std::max(0, efpip->obj_w - R), 0, std::min(efpip->obj_w, R), efpip->obj_h, 0, 0, 0, 0, 2);
 	}
 	else exfunc->fill(efpip->obj_temp, 0, 0, efpip->obj_w, efpip->obj_h, 0, 0, 0, 0, 2);
 
