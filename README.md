@@ -151,6 +151,10 @@ left2, top2, right2, bottom2 = CropBlank_S.bounding_box(left, top, right, bottom
 
 ##  改版履歴
 
+- **v1.01** (2025-01-22)
+
+  - 余白に負の値を設定すると範囲外メモリにアクセスする可能性があったのを修正．
+
 - **v1.00** (2025-01-16)
 
   - 初版．
