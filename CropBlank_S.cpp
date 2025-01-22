@@ -388,11 +388,6 @@ std::tuple<int, int, int, int> find_bounds(ExEdit::PixelYCA const* data, size_t 
 	return { search_L ? l : 0, search_T ? t : 0, search_R ? r : w - 1, search_B ? b : h - 1 };
 }
 
-// crops into zero-sized image.
-static inline void crop_into_blank(ExEdit::FilterProcInfo* efpip)
-{
-	efpip->obj_w = efpip->obj_h = 0;
-}
 // pad or crop only right / bottom sides. no copy is required.
 static inline void crop_pad_RB(int R, int B, ExEdit::Exfunc* exfunc, ExEdit::FilterProcInfo* efpip)
 {
@@ -452,12 +447,12 @@ BOOL func_proc(ExEdit::Filter* efp, ExEdit::FilterProcInfo* efpip)
 
 	if (src_w + pad_L + pad_R <= 0 || src_h + pad_T + pad_B <= 0)
 		// cropping already exceeds the size of the original image.
-		return crop_into_blank(efpip), TRUE;
+		return FALSE;
 
 	// find the bounding box.
 	auto [L, T, R, B] = find_bounds(efpip->obj_edit, efpip->obj_line, threshold,
 		src_w, src_h, search_T, search_B, search_L, search_R);
-	if (L < 0) return crop_into_blank(efpip), TRUE; // all pixels are below the threshold.
+	if (L < 0) return FALSE; // all pixels are below the threshold.
 	L *= -1; T *= -1;
 	R += 1 - src_w;
 	B += 1 - src_h;
@@ -479,8 +474,7 @@ BOOL func_proc(ExEdit::Filter* efp, ExEdit::FilterProcInfo* efpip)
 	}
 
 	// perform buffer operation.
-	if (src_w + L + R <= 0 || src_h + T + B <= 0)
-		return crop_into_blank(efpip), TRUE;
+	if (src_w + L + R <= 0 || src_h + T + B <= 0) return FALSE; // results in empty.
 	else if (L == 0 && T == 0)
 		crop_pad_RB(R, B, efp->exfunc, efpip);
 	else crop_pad(L, T, R, B, efp->exfunc, efpip);
